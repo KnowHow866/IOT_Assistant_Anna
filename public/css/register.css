@@ -1,0 +1,18 @@
+.main{
+  background-image: url('../src/register_background.jpg');
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  height: 500px;
+  width: 100%;
+}
+
+#register_form{
+  position: absolute;
+  top: 0px;
+}
+
+.form-control{
+  margin-bottom: 10px;
+}

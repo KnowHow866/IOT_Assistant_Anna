@@ -1,0 +1,36 @@
+.main_bg{
+/*   background-color: #66FFFF; */
+  background-image: url('../src/main_pic.jpg');
+  background-repeat :no-repeat;
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  height: 500px;
+  width : 100%;
+}
+
+#main_tell{
+  position: absolute;
+  left: 100px;
+}
+
+#introduction{
+  position: absolute;
+  top: 570px;
+  height: 100px;
+}
+
+#login_form{
+  position: absolute;
+  top: 50px;
+  right:0%;
+  width:160px;
+  height: 150px;
+}
+
+#user_planel{
+  position: absolute;
+  left: 100px;
+  width: 900px;
+  top: 700px;
+}

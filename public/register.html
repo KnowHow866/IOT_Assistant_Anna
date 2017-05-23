@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Service</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./css/register.css">
+</head>
+<body>
+<!--  navbar選項列  -->
+  <nav class="navbar navbar-inverse navbar-static-top"  role="navigation">
+    <div class="navbar-wrapper">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="#" class="navbar-brand">
+            <span class="glyphicon glyphicon-cloud"></span>
+          </a>
+        </div>   
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#" id="home">HOME</a></li>
+            <li><a href="#">SERVICE</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#" id="register">REGISTER</a></li>
+            <li><a href="#" id="log-in-vertify">SIGN IN</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+<!--  body  -->
+  <div class="main">
+    <div class="container">
+    <!-- action="/register_ask" method="post" -->
+      <form class="form-group" id="register_form" > 
+        <h2>Regist An Account</h2>
+        <input type="User" name="User" placeholder="User" class="form-control" id="user"/>
+        <input type="Mail" name="Mail" placeholder="Mail" class="form-control" id="mail"/>
+        <input type="Password" name="Password" placeholder="Password" class="form-control" id="password"/>
+        <input type="Supervisor" name="Supervisor" placeholder="Supervisor?" class="form-control" id="supervisor"/>
+        <button type="submit" class="btn  btn-primary" id="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- end of body   -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="./js/register.js"></script>
+</body>
+</html>

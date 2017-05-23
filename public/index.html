@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./css/main_css.css">
+</head>
+<body>
+<!--  介紹列  -->
+  <nav class="navbar navbar-inverse navbar-static-top"  role="navigation">
+    <div class="navbar-wrapper">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="#" class="navbar-brand">
+            <span class="glyphicon glyphicon-cloud"></span>
+          </a>
+        </div>   
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">HOME</a></li>
+            <li><a href="#">SERVICE</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" id="register">REGISTER</a></li>
+            <li><a href="#" id="log-in-vertify">SIGN IN</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- the welcome door   -->
+  <div class="main_bg">
+    <div class="container">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-6" id="main_tell">
+      <h1>IOT Assistant Anna</h1>
+      <p>Internet of your devices, we can analyze the data, monitoring machine</p>
+    </div>
+    <div class="col-lg-3">
+      <div id="cloud-box">
+<!--         <img src="http://docs.marketo.com/download/attachments/557070/attach.png" alt="no source" id="cloud" /> -->
+      </div>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+  </div>
+
+  <!-- login form   -->
+  <div id="login_form">
+    <div class="input-group">
+      <!-- <span class="input-group-addon">User</span> -->
+      <input type="text" class="form-control" id="user" name="User" placeholder="User"/>
+    </div>
+    <div class="input-group">
+      <!-- <span class="input-group-addon">Password</span> -->
+      <input type="text" class="form-control" id="password" name="Password" placeholder="Password"/>
+    </div>
+  </div>
+  
+<!-- Introdution   -->
+  <div id="introduction">
+    <div class="container">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-3">
+        <h2>Service One</h2>
+        <p>content od service one</p>
+      </div>
+      <div class="col-lg-3">
+        <h2>Service Two</h2>
+        <p>content od service two</p>
+      </div>
+      <div class="col-lg-3">
+        <h2>Service Three</h2>
+        <p>content od service three</p>
+      </div>
+    </div>
+  </div>
+  
+  <!--user planel    -->
+  <div class="container" id="user_planel">
+    <div class="panel panel-default">
+      <div class="panel-heading" id="user_name">User Name (Please login first)</div>
+      <div class="panel-body" id="user_info">
+        <p>Dear user, you can manipulate all of your device here</p>
+      </div>
+      <table class="table user-table" id="user_device">
+        <thead>
+          <tr>
+            <th>Device Name</th>
+            <th>State</th>
+            <th>Description</th>
+            <th>DashBoard</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Model01</td>
+            <td>onService</td>
+            <td>Monitoring Station</td>
+            <td>
+              <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span></button>
+            </td>
+          </tr>
+        </tbody>
+        
+      </table>
+    </div>
+  </div>
+    
+  </div>
+<!-- end of body   -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="./js/main_js.js"></script>
+</body>
+</html>
+
+
