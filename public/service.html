@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Service</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./css/service.css">
+  <link rel="stylesheet" href="./css/c3.min.css">
+</head>
+<body style="background-color:#E3E3E3;">
+  <!--  介紹列  -->
+  <nav class="navbar navbar-inverse navbar-static-top"  role="navigation">
+    <div class="navbar-wrapper">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="#" class="navbar-brand">
+            <span class="glyphicon glyphicon-cloud"></span>
+          </a>
+        </div>   
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#" id="home">HOME</a></li>
+            <li class="active"><a href="#">SERVICE</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" id="register">Hi Supervisor</a></li>
+            <li><a href="#" id="log-in-vertify">LOG OUT</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!--  Device Table  -->
+  <div id="device-table">
+    <ol class="breadcrumb">
+      <li class="active"><a href="#" >Device007</a></li>
+      <li><a href="#">ClimateStation304</a></li>
+      <li><a href="#">EngineCare48</a></li>
+    </ol>
+  </div>
+
+  <!-- Analyze -->
+  <div class="container" id="data-view">
+    <div class="panel panel-default">
+      <div class="panel-heading">Standard Analyze Service</div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>Average</td>
+          <td id="avg"></td>
+        </tr>
+        <tr>
+          <td>theMax</td>
+          <td id="max"></td>
+        </tr>
+         <tr>
+          <td>theMin</td>
+          <td id="min"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+<!--  Page topic  -->
+  <div id="img-box" class="img-responsive">
+<!--     <img src="https://scontent-tpe1-1.xx.fbcdn.net/v/t1.0-9/18581505_1123293521104557_4313710631047539095_n.jpg?oh=8d7c4e32b47402edd599a12fd8daafe0&oe=59BB4D48" class="img-responsive" alt="" /> -->
+  </div>
+
+  
+<!-- device panel  -->
+  <div class="panel panel-success" id="device-panel">
+    <div class="panel-heading">Deivce007</div>
+<!--     <div class="panel-body"></div> -->
+    <ul class="list-group">
+      <li class="list-group-item">State : <span class="badge">Connected</span></li>
+      <li class="list-group-item">Data transported :</li> 
+      <li class="list-group-item">
+        <span class="label label-info">Temperature/Time</span>
+        <span class="label label-info">Humidity/Time</span>
+      </li>
+    </ul>
+  </div>
+  
+<!--  C3-zone  -->
+  <div class="chart-box1">
+    <div class="text1"><h3>Temperature : Time</h3></div>
+    <div class="c3-chart1" id="chart"></div>
+  </div>
+  
+  
+<!--  end of body  -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="./js/d3.v3.min.js"></script>
+  <script src="./js/c3.min.js"></script>
+  <script src="./js/pic.js"></script>
+  <script src="./js/service.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,54 @@
+#img-box{
+/*   opacity: 0.7; */
+  background-image: url('../src/service01.jpg');
+  background-repeat :no-repeat;
+  position: absolute;
+  left: 0%;
+  top:120px;
+  width: 100%;
+  height: 450px;
+/*   border: 1px solid; */
+  
+}
+
+#service-box{
+  position: absolute;
+  left: 10%;
+  width: 600px;
+  height: 500px;
+}
+
+#device-panel{
+  position: absolute;
+  top:200px;
+  left: 15%;
+  width: 350px;
+  height: 200px;
+}
+
+.chart-box1{
+  position: absolute;
+  left: 10%;
+  top: 580px;
+  width: 600px;
+  height: 400px;
+  /*border: 1px solid;*/
+}
+
+#device-table{
+  position: absolute;
+  left: 10%;
+  width: 80%;
+}
+
+.text1{
+  margin-left: 25%;
+}
+
+#data-view{
+  position:absolute;
+  top: 620px;
+  width:400px;
+  left:60%;
+}
+

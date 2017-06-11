@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
 
-mongoose.connect('mongodb://localhost/user');
+mongoose.connect('mongodb://localhost/user'); 
 
 var user_schema = new mongoose.Schema({
 	'_id': Number,

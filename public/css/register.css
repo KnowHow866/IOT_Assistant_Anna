@@ -3,7 +3,7 @@
   background-repeat: no-repeat;
   position: absolute;
   top: 50px;
-  left: 100px;
+  left: 0px;
   height: 500px;
   width: 100%;
 }
@@ -11,6 +11,8 @@
 #register_form{
   position: absolute;
   top: 0px;
+  margin-top: 50px;
+  margin-left: 100px;
 }
 
 .form-control{
