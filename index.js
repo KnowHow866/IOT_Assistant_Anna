@@ -10,7 +10,7 @@ var app = express();
 
 // 專案所在絕對路徑
 //var __dirname = "/Users/holis/Documents/academic/專案紀錄/IOT\ Assistant\ Anna";
-var __dirname = "/app";
+var __dirname = "";
 var __webAddress = "NULL";
 
 app.use(bodyParser.urlencoded({extended:true}));
