@@ -8,8 +8,10 @@ var transporter = require('./models/mail');
 //var multer = require('multer'); 
 var app = express();
 
+app.set('port',(process.env.PORT || 3000));
+
 // 專案所在絕對路徑
-var __dirname = "/Users/holis/Documents/academic/專案紀錄/IOT\ Assistant\ Anna";
+//var __dirname = "/Users/holis/Documents/academic/專案紀錄/IOT\ Assistant\ Anna";
 //var __dirname = "";
 var __webAddress = "NULL";
 
@@ -102,8 +104,8 @@ app.get("*",function(req,res){
 	res.send("Cannot Found Page");
 });
 
-app.listen(5438,function(req,res){
-	console.log("Server init at port 5438");
+app.listen(app.get('port'),function(req,res){
+	console.log("Server init at port "+app.get('port'));
 });
 
 app.post('/register_ask',function(req,res){
