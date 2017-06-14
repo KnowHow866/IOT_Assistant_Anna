@@ -7,11 +7,11 @@ app.use(express.static('./public'));
  
 
 // 路由
-app.get("/",function(req,res){
+app.get("test",function(req,res){
 	res.send("Hello");
 });
 
-app.listen(5438,function(req,res){
+app.listen(app.get('port'),function(req,res){
 	console.log("Server init at port "+ app.get('port'));
 });
 
