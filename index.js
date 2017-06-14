@@ -3,8 +3,7 @@ var app = express();
 
 var port = process.env.PORT || 5437;
 
-app.use(express.static(__dirname + '/public'));
-
+app.use(express.static('./public'));
  
 
 // 路由
