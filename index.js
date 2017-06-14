@@ -12,6 +12,6 @@ app.get("/",function(req,res){
 });
 
 app.listen(5438,function(req,res){
-	console.log("Server init at port "+ port);
+	console.log("Server init at port "+ app.get('port'));
 });
 
