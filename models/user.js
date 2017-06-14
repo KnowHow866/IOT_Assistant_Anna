@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
 mongoose.connect('mongodb://localhost/user'); 
+//mongoose.connect('mongodb://holis:datalocate367@ds131878.mlab.com:31878/annabase');
 
 var user_schema = new mongoose.Schema({
 	'_id': Number,
