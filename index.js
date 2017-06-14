@@ -7,7 +7,7 @@ app.use(express.static('./public'));
  
 
 // 路由
-app.get("test",function(req,res){
+app.get("/test",function(req,res){
 	res.send("Hello");
 });
 
