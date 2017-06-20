@@ -13,7 +13,7 @@ var apply_schema = new mongoose.Schema({
 	'apply_date': {type: Date, default: Date.now }
 });
 
-var apply = mongoose.model('apply',apply_schema);
+var apply = mongoose.model('applies',apply_schema);
 
 module.exports = apply;
 
