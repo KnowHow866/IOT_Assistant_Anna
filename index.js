@@ -73,7 +73,7 @@ app.get("/vertify/:User/:Pass",function(req,res){
 
 			var count = 1;
 			//為新帳號產生 _id
-			userDB.count().exec(function(err,theCount){
+			userDB.count().exec(function(err,count){
 				if(err || !theCount) console.log("userDB count err:  "+err);
 				else{
 					console.log("userDB count:  "+theCount);
