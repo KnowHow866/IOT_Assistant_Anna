@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
-mongoose.createConnection('mongodb://holis:datalocate367@ds131878.mlab.com:31878/annabase');
+mongoose.createConnection('mongodb://anna:iamanna@ds131878.mlab.com:31878/annabase');
 //mongoose.createConnection('mongodb://holis:datalocate367@ds131878.mlab.com:31878/annabase');
 
 var apply_schema = new mongoose.Schema({
