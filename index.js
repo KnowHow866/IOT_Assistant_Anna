@@ -135,7 +135,7 @@ app.post('/register_ask',function(req,res){
 			to: "Dear_applyer "+ Mail,
 			subject: "Account Vertify",
 			text: "Please click the link to vertify"
-				  +'\nhttp://127.0.0.1:5438/vertify/' + User +'/' + Code
+				  +'\nmurmuring-woodland-'+app.get('port')+'.herokuapp.com/vertify/' + User +'/' + Code
 		};
 
 		//儲存apply資料
