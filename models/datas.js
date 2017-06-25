@@ -7,18 +7,18 @@ mongoose.createConnection('mongodb://anna:iamanna@ds131878.mlab.com:31878/annaba
 var data_schema = new mongoose.Schema({
 	'_id': Number,
 	'device': String,
-	'collection': String,
+	'picname': String,
 	'y-name': String,
-	'data':{
-		type: Array,
-		'dafault': []
-	},
+	'data':[{
+		 'value': Number,
+		 'd_date': {type: Date, default: Date.now }
+	}],
 	'build-date': {type: Date, default: Date.now }
 });
 
-var apply = mongoose.model('datas',apply_schema);
+var datas = mongoose.model('datas',data_schema);
 
-module.exports = apply;
+module.exports = datas;
 
 // 'x': Number,
 // 'y': Number,

@@ -8,9 +8,6 @@
   <link rel="stylesheet" href="./css/c3.min.css">
   <!-- 引用socket.io -->
   <script src="/socket.io/socket.io.js"></script>
-  <script>
-    var socket = io.connect();
-  </script>
 </head>
 <body style="background-color:#E3E3E3;">
   <!--  介紹列  -->
@@ -26,6 +23,7 @@
           <ul class="nav navbar-nav">
             <li><a href="#" id="home">HOME</a></li>
             <li class="active"><a href="#">SERVICE</a></li>
+            <li><a href="#" id="demo">DEMO</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#" id="register">Hi Supervisor</a></li>
@@ -106,8 +104,185 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="./js/d3.v3.min.js"></script>
   <script src="./js/c3.min.js"></script>
-  <script src="./js/demo_pic.js"></script>
+  <script>
+    //var socket = io.connect();
+    // $('#update').on('click',function(){
+    //   socket.emit('test',{'msg': '測試訪問'});
+    // });
+  </script>
+  <!-- <script src="./js/demo_pic.js"></script> -->
   <script src="./js/demo.js"></script>
+  <!-- c3繪圖，socket無法移出html -->
+  <script>
+    var avg = 0;
+    var datacount = 0;
+    var max = 0;
+    var min = 0;
+    //var socket = io.connect();
+
+    function minSec(){
+      var d = new Date();
+      var min = d.getMinutes();
+      min = (min < 10) ? ('0' + min) : min;
+
+      var sec = d.getSeconds();
+      sec = (sec < 10) ? ('0' + sec) : sec;
+
+      return min+ ":" + sec;
+    }
+
+    function pseudo(){
+      var data =  Math.floor(Math.random()*40);
+      datacount++;
+      avg = avg*((datacount-1)/datacount)+data*(1/datacount);
+      if(datacount == 1){
+        max = data; min = data;
+      }
+      else{
+        if(data > max) max = data;
+        if(data < min) min = data;
+      }
+
+      //資執行資料設置
+      $('#avg').text(avg.toPrecision(5));
+      $('#max').text(max);
+      $('#min').text(min);
+
+      return data;
+    }
+
+    function counter(data){
+      datacount++;
+      avg = avg*((datacount-1)/datacount)+data*(1/datacount);
+      if(datacount == 1){
+        max = data; min = data;
+      }
+      else{
+        if(data > max) max = data;
+        if(data < min) min = data;
+      }
+
+      //資執行資料設置
+      $('#avg').text(avg.toPrecision(5));
+      $('#max').text(max);
+      $('#min').text(min);
+    }
+
+
+//------------------------Document ready-------------------------
+    $(document).ready(function(){
+    //環境設定
+    var socket = io.connect();
+
+    var chart = c3.generate({
+      padding:{ right:50 },
+      size: { 
+        width:600, 
+        height:300
+      },
+      data: {
+        columns:[
+          ['Time',null],
+          ['Temp',null]
+        ],
+        x: 'Time',
+        xFormat: '%M:%S',
+        colors:{'Temp':'#ff6600'}
+      },
+      axis:{
+        x:{
+          type: 'timeseries',
+          label: 'min:sec',
+          tick: {
+            rotate:30, 
+            format:'%M:%S'
+          }
+        },
+        y:{
+          label: 'Temp',
+          max: 50, 
+          min: 0
+        }
+      }
+    });
+
+    function draw(value,time){
+      chart.flow({
+        columns:[
+          ['Time',time],
+          ['Temp',value]
+        ],
+        length: (tckCount < totalTck)? 0:1,
+        duration: 300,
+        done: function(){
+          tckCount++;
+        }
+      });
+    }
+
+
+    var tckCount = 0;
+    var totalTck = 20;
+
+    //自動載入資料
+    $.ajax({
+      url: "/data_log",
+      type: "POST",
+      contentType: "application/json",
+      dataType: "json",
+      data: JSON.stringify({msg: 'device007'}),
+      error: function(){
+        alert("data log post wrong");
+      },
+      success: function(data){
+        console.log(data);
+        data.forEach(function(d){  
+          draw(d.value, d.u_date);
+          counter(d.value);
+        })
+      }
+    });
+
+
+    $('#update').on('click',function(){
+      value = pseudo();
+      time = minSec();
+
+      //draw(value,time);
+      socket.emit('test',{'msg': '測試訪問'});
+
+      //儲存資料
+      socket.emit('update',{
+        'data': value,
+        'u_date': time
+      });
+    });
+
+
+    socket.on('localupdate',function(data){
+      draw(data.value,  data.time);
+      counter(data.value);
+    });
+    
+
+  });
+
+    // setInterval(function(){
+    //  //移動chart01
+    //  chart.flow({
+    //    columns:[
+    //      ['Time',minSec()],
+    //      ['Temp',pseudo()]
+    //    ],
+    //    length: (tckCount < totalTck)? 0:1,
+    //    duration: 300,
+    //    done: function(){
+    //      tckCount++;
+    //    }
+    //  });
+    // },2000);
+  </script>
   
 </body>
 </html>
+

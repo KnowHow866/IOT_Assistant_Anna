@@ -123,6 +123,11 @@ $(document).ready(function(){
     // else location.href = "./service";
     location.href = "./service";
   });
+  $('#demo').on('click',function(){
+    if(login == 0) alert("Please login first");
+    // else location.href = "./service";
+    location.href = "/demo";
+  });
 });
 
 

@@ -4,7 +4,7 @@ var cookieParser = require("cookie-parser");
 var cookieSession = require("cookie-session");
 var userDB = require('./models/user');
 var apply = require('./models/registerApply');
-var datas = require('./models/data')
+var datas = require('./models/demo_data');
 var transporter = require('./models/mail');
 var io = require("socket.io");
 //var multer = require('multer'); 
@@ -37,7 +37,9 @@ app.use(express.static(__dirname + '/public'));
 //變數們
 var USER = "NULL";
 var PASSWORD = "NULL"; 
-
+var update = 0;
+var globalvalue = 0;
+var globaltime = 0;
 // 路由
 app.get("/",function(req,res){
 	res.sendFile( __dirname + "/public/index.html");
@@ -53,6 +55,11 @@ app.get("/user",function(req,res){
 	res.sendFile( __dirname + "/public/user_data.html");
 });
 app.get("/service",function(req,res){
+	if(req.session.login)
+		res.sendFile( __dirname + "/public/demo.html");
+	else res.redirect("/");
+});
+app.get("/demo",function(req,res){
 	if(req.session.login)
 		res.sendFile( __dirname + "/public/service.html");
 	else res.redirect("/");
@@ -230,10 +237,66 @@ app.post('/logout',function(req,res){
 	res.send({msg: 'done'});
 });
 
+app.post('/data_log',function(req,res){
+	datas.find().sort({'d_date':-1}).limit(20).exec(function(err,data){
+		if(err) console.log('data search err: '+err);
+		else{
+			res.send((JSON.stringify(data)));
+		}
+	});
+});
+
 sio.on('connection',function(socket){
 	socket.on('test',function(data){
 		console.log('用戶:'+data.msg);
 	});
+
+	socket.on('update',function(data){
+		console.log('server get data: '+ data.data);
+		console.log('server get time: '+ data.u_date);
+
+		var coined_data = new datas({
+			'value': data.data,
+			'u_date': data.u_date
+		});
+
+		coined_data.save(function(err){
+			if(err) console.log('save err'+ err);
+			else{
+				console.log('save success');
+				console.log('server give localupdate');
+				socket.emit('localupdate',{
+			        'value': data.data,
+			        'time': data.u_date
+	      		});
+			}
+		});
+
+		// console.log('server give localupdate');
+		// 	socket.emit('localupdate',{
+		//         'value': globalvalue,
+		//         'time': globaltime
+	 //      	});
+
+		// globalvalue = data.data;
+		// globaltime = data.u_date;
+		// update ++;
+	});
+
+
+	// setInterval(function(){
+	// 	if(update > 0){
+	// 		console.log('server give localupdate');
+	// 		socket.emit('localupdate',{
+	// 	        'value': globalvalue,
+	// 	        'time': globaltime
+	//       	});
+
+	//       	update == 0;
+	// 	}
+	// },500);
+	
+
 });
 
 

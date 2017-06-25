@@ -38,7 +38,7 @@ function pseudo(){
 
 $(document).ready(function(){
 	//環境設定
-	var socket = io.connect();
+	//var socket = io.connect();
 
 	var chart = c3.generate({
 		padding:{ right:50 },
@@ -105,7 +105,7 @@ $(document).ready(function(){
 		  }
 		});
 
-		socket.emit('test',{'msg', '測試訪問'});
+		//socket.emit('test',{'msg', '測試訪問'});
 
 		//儲存資料
 		// socket.emit('update',{

@@ -28,4 +28,9 @@ $(document).ready(function(){
 	$('#log-in-vertify').on('click',function(){
 		location.href = "/";
 	})
+	$('#demo').on('click',function(){
+	  	if(login == 0) alert("Please login first");
+	    // else location.href = "./service";
+	    location.href = "/demo";
+	});
 });
