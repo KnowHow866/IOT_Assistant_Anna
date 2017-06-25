@@ -4,7 +4,9 @@ var cookieParser = require("cookie-parser");
 var cookieSession = require("cookie-session");
 var userDB = require('./models/user');
 var apply = require('./models/registerApply');
+var datas = require('./models/data')
 var transporter = require('./models/mail');
+var io = require("socket.io");
 //var multer = require('multer'); 
 var app = express();
 
@@ -104,9 +106,11 @@ app.get("*",function(req,res){
 	res.send("Cannot Found Page");
 });
 
-app.listen(app.get('port'),function(req,res){
+//啟動伺服器聆聽
+var server = app.listen(app.get('port'),function(req,res){
 	console.log("Server init at port "+app.get('port'));
 });
+var sio = io.listen(server);
 
 app.post('/register_ask',function(req,res){
 	var User = req.body.User;
@@ -213,6 +217,7 @@ app.post("/login",function(req,res){
 	})
 });
 
+
 app.post('/autologin',function(req,res){
 	if(req.session.login){
 		res.send(JSON.stringify({msg: req.session.login}));
@@ -223,6 +228,12 @@ app.post('/autologin',function(req,res){
 app.post('/logout',function(req,res){
 	req.session.login = false;
 	res.send({msg: 'done'});
+});
+
+sio.on('connection',function(socket){
+	socket.on('test',function(data){
+		console.log('用戶:'+data.msg);
+	});
 });
 
 
