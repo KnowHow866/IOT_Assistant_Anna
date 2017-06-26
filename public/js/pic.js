@@ -11,7 +11,10 @@ function minSec(){
     var sec = d.getSeconds();
     sec = (sec < 10) ? ('0' + sec) : sec;
 
-    return min+ ":" + sec;
+    var hour = d.getHours();
+    hour = (hour < 10) ? ('0'+hour) : hour;
+
+    return hour+":"+min+ ":" + sec;
  }
 
 function pseudo(){
@@ -48,16 +51,16 @@ $(document).ready(function(){
 		    ['Temp',pseudo()]
 		  ],
 		  x: 'Time',
-		  xFormat: '%M:%S',
+		  xFormat: '%H:%M:%S',
 		  colors:{'Temp':'#ff6600'}
 		},
 		axis:{
 		  x:{
 		    type: 'timeseries',
-		    label: 'min:sec',
+		    label: 'hour:min:sec',
 		    tick: {
 		      rotate:30, 
-		      format:'%M:%S'
+		      format:'%H:%M:%S'
 		    }
 		  },
 		  y:{

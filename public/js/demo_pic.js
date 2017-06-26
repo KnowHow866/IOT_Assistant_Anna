@@ -12,7 +12,10 @@ function minSec(){
     var sec = d.getSeconds();
     sec = (sec < 10) ? ('0' + sec) : sec;
 
-    return min+ ":" + sec;
+    var hour = d.getHours();
+    hour = (hour < 10) ? ('0'+hour) : hour;
+
+    return hour+ ":" +min+ ":" + sec;
  }
 
 function pseudo(){
@@ -61,7 +64,7 @@ $(document).ready(function(){
 		    label: 'min:sec',
 		    tick: {
 		      rotate:30, 
-		      format:'%M:%S'
+		      format:'%H%M:%S'
 		    }
 		  },
 		  y:{

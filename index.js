@@ -83,10 +83,10 @@ app.get("/vertify/:User/:Pass",function(req,res){
 			var count = 1;
 			//為新帳號產生 _id
 			userDB.count().exec(function(err,theCount){
-				if(err || !count) console.log("userDB count err:  "+err);
+				if(err || !theCount) console.log("userDB count err:  "+err);
 				else{
 					console.log("userDB count:  "+theCount);
-					count = theCount+1;
+					count = theCount+3;
 					var user_data = new userDB({
 						'_id' : count,
 						'name' : user,
@@ -131,7 +131,7 @@ app.post('/register_ask',function(req,res){
 	apply.count().exec(function(err,theCount){
 		if(err || !count);
 		else{
-			count = theCount+1;
+			count = theCount+3;
 		}
 		var applyData = new apply({
 			'_id' : count,
